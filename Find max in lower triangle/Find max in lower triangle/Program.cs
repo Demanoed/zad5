@@ -9,7 +9,6 @@ namespace Find_max_in_lower_triangle
 {
     class Program
     {
-        private static Random rnd = new Random();
         private static double[,] matr;
         public static void CreateMatrix(int x)
         {
@@ -27,7 +26,7 @@ namespace Find_max_in_lower_triangle
             {
                 for (int i = 0; i < x; i++)
                     for (int j = 0; j < x; j++)
-                        matr[i, j] = rnd.Next(-100, 100);
+                        matr[i, j] = RandomMy.NumberDiap(-100, 100);
             }
         }
         static void Main()
