@@ -29,6 +29,51 @@ namespace Find_max_in_lower_triangle
                         matr[i, j] = RandomMy.NumberDiap(-100, 100);
             }
         }
+        public static void PrintMatrix(int x)
+        {
+            ColorMess.Yellow("\n Ваша матрица выглядит так: \n");
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < x; j++)
+                {
+                    ColorMess.Cyan("\t" + matr[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+        public static void ZeroLeftCorner(int x)
+        {
+            int k = x-1;
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < k; j++)
+                {
+                    matr[i, j] = 0;
+                }
+                k--;
+            }
+        }
+        public static void ZeroRightCorner(int x)
+        {
+            int z = 0;
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = x-1; j > z; j--)
+                {
+                    matr[i, j] = 0;
+                }
+                z++;
+            }
+        }
+        private static double FindMax(int x)
+        {
+            double max = matr[0, 0];
+            for (int i = 0; i < x; i++)
+                for (int j = 0; j < x; j++)
+                    if (max < matr[i, j])
+                        max = matr[i, j];
+            return max;
+        }
         static void Main()
         {
             ColorMess.Yellow("\n Введите количество строк и столбцов (одно число в диапазоне от 2 до 10): ");
@@ -36,6 +81,11 @@ namespace Find_max_in_lower_triangle
             matr = new double[x, x];
             CreateMatrix(x);
             Console.Clear();
+            PrintMatrix(x);
+            ZeroLeftCorner(x);
+            ZeroRightCorner(x);
+            ColorMess.Yellow("\n Максимальное число, находящееся в нижнем треугольнике равно: " + FindMax(x));
+            Message.GoToBack();
         }
     }
 }
