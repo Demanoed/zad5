@@ -9,7 +9,10 @@ namespace Find_max_in_lower_triangle
 {
     class Program
     {
+        #region Матрица
         private static double[,] matr;
+        #endregion
+        #region Создает матрицу
         public static void CreateMatrix(int x)
         {
             int k = Message.HowAdd();
@@ -29,6 +32,8 @@ namespace Find_max_in_lower_triangle
                         matr[i, j] = RandomMy.NumberDiap(-100, 100);
             }
         }
+        #endregion
+        #region Печатает матрицу
         public static void PrintMatrix(int x)
         {
             ColorMess.Yellow("\n Ваша матрица выглядит так: \n");
@@ -41,6 +46,8 @@ namespace Find_max_in_lower_triangle
                 Console.WriteLine();
             }
         }
+        #endregion
+        #region Обработка части над побочной диагонали
         public static void ZeroLeftCorner(int x)
         {
             int k = x-1;
@@ -53,6 +60,8 @@ namespace Find_max_in_lower_triangle
                 k--;
             }
         }
+        #endregion
+        #region Обработка части над главной диагонали
         public static void ZeroRightCorner(int x)
         {
             int z = 0;
@@ -65,6 +74,8 @@ namespace Find_max_in_lower_triangle
                 z++;
             }
         }
+        #endregion
+        #region Поиск максимума
         private static double FindMax(int x)
         {
             double max = matr[0, 0];
@@ -74,6 +85,8 @@ namespace Find_max_in_lower_triangle
                         max = matr[i, j];
             return max;
         }
+        #endregion
+        #region Запрос на ввод значений и вывод результата
         static void Main()
         {
             ColorMess.Yellow("\n Введите количество строк и столбцов (одно число в диапазоне от 2 до 10): ");
@@ -87,5 +100,6 @@ namespace Find_max_in_lower_triangle
             ColorMess.Yellow("\n Максимальное число, находящееся в нижнем треугольнике равно: " + FindMax(x));
             Message.GoToBack();
         }
+        #endregion
     }
 }
