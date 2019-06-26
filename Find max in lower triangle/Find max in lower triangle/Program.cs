@@ -74,12 +74,16 @@ namespace Find_max_in_lower_triangle
         #region Поиск максимума
         private static double FindMax(int x)
         {
+            int k = 0;
             double max = matr[x-1, x-1];
-            for (int i = 0; i < x; i++)
-                for (int j = 0; j < x; j++)
-                    if (max < matr[i, j] && matr[i,j] != 0)
+            for (int i = x-1; i > -1; i--)
+            {
+                for (int j = k; j < x - k; j++)
+                    if (max < matr[i, j] && matr[i, j] != 0)
                         max = matr[i, j];
-            return max;
+                k++;
+            }
+                return max;
         }
         #endregion
         #region Запрос на ввод значений и вывод результата
