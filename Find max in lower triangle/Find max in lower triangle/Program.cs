@@ -43,34 +43,6 @@ namespace Find_max_in_lower_triangle
             }
         }
         #endregion
-        #region Обработка части над побочной диагонали
-        public static void ZeroLeftCorner(int x)
-        {
-            int k = x-1;
-            for (int i = 0; i < x; i++)
-            {
-                for (int j = 0; j < k; j++)
-                {
-                    matr[i, j] = 0;
-                }
-                k--;
-            }
-        }
-        #endregion
-        #region Обработка части над главной диагонали
-        public static void ZeroRightCorner(int x)
-        {
-            int z = 0;
-            for (int i = 0; i < x; i++)
-            {
-                for (int j = x-1; j > z; j--)
-                {
-                    matr[i, j] = 0;
-                }
-                z++;
-            }
-        }
-        #endregion
         #region Поиск максимума
         private static double FindMax(int x)
         {
@@ -79,7 +51,7 @@ namespace Find_max_in_lower_triangle
             for (int i = x-1; i > -1; i--)
             {
                 for (int j = k; j < x - k; j++)
-                    if (max < matr[i, j] && matr[i, j] != 0)
+                    if (max < matr[i, j])
                         max = matr[i, j];
                 k++;
             }
@@ -95,8 +67,6 @@ namespace Find_max_in_lower_triangle
             CreateMatrix(x);
             Console.Clear();
             PrintMatrix(x);
-            ZeroLeftCorner(x);
-            ZeroRightCorner(x);
             ColorMess.Yellow("\n Максимальное число, находящееся в нижнем треугольнике равно: " + FindMax(x));
             Message.GoToBack();
         }
